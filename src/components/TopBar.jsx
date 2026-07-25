@@ -12,24 +12,6 @@ function TopBar({ user }) {
       </p>
       </div>
 
-      <div className="flex items-center gap-4">
-
-        <input
-          type="text"
-          placeholder="Search..."
-          className="border rounded-lg px-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-[#C97A2B]"
-        />
-
-        <button className="text-2xl">🔔</button>
-
-        <img
-          src="https://i.pravatar.cc/100"
-          alt="User"
-          className="w-12 h-12 rounded-full border-2 border-[#C97A2B]"
-        />
-
-      </div>
-
     </div>
   );
 }
