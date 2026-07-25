@@ -28,8 +28,8 @@ function EditProfile({ user, setUser }) {
         onSubmit={handleSubmit}
         className="grid grid-cols-1 md:grid-cols-2 gap-6"
 >
-         <div className="md:col-span-2 flex flex-col md:flex-row items-center gap-6 mb-8">
-    <div className="relative w-28 h-28 sm:w-32 sm:h-32 mx-auto mb-4">
+         <div className="md:col-span-2 flex flex-col items-start gap-4 mb-8">
+    <div className="relative w-28 h-28 sm:w-32 sm:h-32 mb-4">
 
     <img
       src={formData.image}
@@ -78,7 +78,6 @@ function EditProfile({ user, setUser }) {
     Click the pencil icon to update your profile picture.
   </p>
 </div>
-        <div className="md:col-span-2"></div>
         <div>
           <label className="block mb-2 font-semibold">
             Full Name
