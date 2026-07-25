@@ -19,8 +19,8 @@ function HelpSupport() {
   ];
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8">
-      <h1 className="text-3xl font-bold text-[#4A2F22] mb-6">
+    <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
+      <h1 className="text-2xl sm:text-3xl font-bold text-[#4A2F22] mb-6">
         Help & Support
       </h1>
 
@@ -32,31 +32,31 @@ function HelpSupport() {
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="border rounded-2xl p-6 bg-[#F8F5F2] shadow-md hover:shadow-xl transition duration-300"
+            className="border rounded-2xl p-4 sm:p-6 bg-[#F8F5F2] shadow-md hover:shadow-xl ..."
           >
-            <h2 className="font-bold text-xl text-[#4A2F22]">
+            <h2 className="font-bold text-lg sm:text-xl text-[#4A2F22]">
               {faq.question}
             </h2>
 
-            <p className="mt-3 text-gray-700 leading-7">
+            <p className="mt-3 text-sm sm:text-base text-gray-700 leading-7">
               {faq.answer}
             </p>
           </div>
         ))}
       </div>
 
-      <div className="mt-10 bg-[#FFF3E0] p-6 rounded-2xl shadow-md">
-        <h2 className="font-bold text-2xl text-[#4A2F22]">
+      <div className="mt-10 bg-[#FFF3E0] p-4 sm:p-6 rounded-2xl shadow-md">
+        <h2 className="font-bold text-xl sm:text-2xl text-[#4A2F22]">
           Need More Help?
         </h2>
         <p className="text-gray-600 mt-2">
         Our support team is available Monday to Saturday from 9:00 AM to 8:00 PM.
         </p>
-        <p className="mt-5 text-lg font-medium">
+        <p className="mt-5 text-base sm:text-lg font-medium">
           📧 support@cafedashboard.com
         </p>
 
-        <p className="mt-3 text-lg font-medium">
+        <p className="mt-3 text-base sm:text-lg font-medium">
           📞 +91 98765 43210
         </p>
       </div>

@@ -61,7 +61,7 @@ function ProfileDashboard() {
         return <HelpSupport />;
 
       case "About Us":
-        return <AboutUs />;
+        return <AboutUs />
 
       case "Logout":
         return <Logout />;
@@ -79,14 +79,16 @@ function ProfileDashboard() {
 
   return (
     <div className="flex min-h-screen bg-[#F8F5F2]">
-      <Sidebar active={active} setActive={setActive} />
+  <Sidebar active={active} setActive={setActive} />
 
-      <div className="flex-1 p-8">
-        <TopBar user={user} />
+  <div className="flex-1 p-3 sm:p-5 md:p-8 overflow-x-hidden">
+    <TopBar user={user} />
 
-        <div className="mt-6">{renderContent()}</div>
-      </div>
+    <div className="mt-4 md:mt-6">
+      {renderContent()}
     </div>
+  </div>
+</div>
   );
 }
 

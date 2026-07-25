@@ -32,8 +32,8 @@ function ContactUs() {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8">
-      <h1 className="text-3xl font-bold text-[#4A2F22] mb-8">
+    <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
+      <h1 className="text-2xl sm:text-3xl font-bold text-[#4A2F22] mb-6">
         Contact Us
       </h1>
 
@@ -50,7 +50,7 @@ function ContactUs() {
             value={form.name}
             onChange={handleChange}
             placeholder="Enter your name"
-            className="w-full border rounded-lg p-3"
+            className="w-full border rounded-lg p-3 text-sm sm:text-base"
           />
         </div>
 
@@ -65,7 +65,7 @@ function ContactUs() {
             value={form.email}
             onChange={handleChange}
             placeholder="Enter your email"
-            className="w-full border rounded-lg p-3"
+            className="w-full border rounded-lg p-3 text-sm sm:text-base"
           />
         </div>
 
@@ -80,13 +80,13 @@ function ContactUs() {
             value={form.message}
             onChange={handleChange}
             placeholder="Write your message..."
-            className="w-full border rounded-lg p-3"
+            className="w-full border rounded-lg p-3 text-sm sm:text-base"
           />
         </div>
-        <div className="mt-8 flex justify-start">
+        <div className="mt-8 flex justify-center sm:justify-start">
         <button
           type="submit"
-          className="bg-[#C97A2B] text-white px-10 py-3 rounded-2xl hover:bg-[#a86422]"
+          className="bg-[#C97A2B] text-white w-full sm:w-auto px-10 py-3 rounded-2xl hover:bg-[#a86422] transition"
         >
           Send Message
         </button>

@@ -48,14 +48,14 @@ import { useState } from "react";
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8">
-      <h1 className="text-3xl font-bold text-[#4A2F22] mb-8">
+    <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
+      <h1 className="text-2xl sm:text-3xl font-bold text-[#4A2F22] mb-6">
         Change Password
       </h1>
 
       <form
         onSubmit={handleSubmit}
-        className="max-w-xl space-y-6"
+        className="max-w-xl space-y-6 w-full"
       >
         <div>
   <label className="block mb-2 font-semibold">
@@ -67,7 +67,7 @@ import { useState } from "react";
     name="oldPassword"
     value={formData.oldPassword}
     onChange={handleChange}
-    className="w-full border rounded-lg p-3"
+    className="w-full border rounded-lg p-3 text-sm sm:text-base"
     placeholder="Enter old password"
   />
   <button
@@ -94,7 +94,7 @@ import { useState } from "react";
     name="newPassword"
     value={formData.newPassword}
     onChange={handleChange}
-    className="w-full border rounded-lg p-3"
+    className="w-full border rounded-lg p-3 text-sm sm:text-base"
     placeholder="Enter new password"
   />
 </div>
@@ -120,7 +120,7 @@ import { useState } from "react";
     name="confirmPassword"
     value={formData.confirmPassword}
     onChange={handleChange}
-    className="w-full border rounded-lg p-3"
+    className="w-full border rounded-lg p-3 text-sm sm:text-base"
     placeholder="Confirm new password"
   />
 </div>
@@ -145,7 +145,7 @@ import { useState } from "react";
 <div className="mt-6">
   <button
     type="submit"
-    className="bg-[#C97A2B] text-white px-8 py-3 rounded-xl hover:bg-[#A85F1F]"
+    className="bg-[#C97A2B] text-white w-full sm:w-auto px-8 py-3 rounded-xl hover:bg-[#A85F1F] transition"
   >
     Update Password
   </button>

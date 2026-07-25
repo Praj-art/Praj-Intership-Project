@@ -19,19 +19,22 @@ function EditProfile({ user, setUser }) {
 };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8">
+    <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
       <h1 className="text-3xl font-bold text-[#4A2F22] mb-8">
         Edit Profile
       </h1>
 
-      <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-8">
-         <div className="md:col-span-2 flex items-center gap-10 mb-8">
-  <div className="relative w-40 h-40">
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+>
+         <div className="md:col-span-2 flex flex-col md:flex-row items-center gap-6 mb-8">
+    <div className="relative w-28 h-28 sm:w-32 sm:h-32 mx-auto mb-4">
 
     <img
       src={formData.image}
       alt="Profile"
-      className="w-full h-full rounded-full border-4 border-[#C97A2B] object-cover"
+      className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-[#C97A2B] object-cover"
     />
 
     <label
@@ -132,10 +135,10 @@ function EditProfile({ user, setUser }) {
           />
         </div>
 
-        <div className="md:col-span-2">
+        <div className="md:col-span-2 flex justify-center md:justify-start">
           <button
-            type="submit"
-            className="bg-[#C97A2B] text-white px-8 py-3 rounded-xl hover:bg-[#a86422]"
+  type="submit"
+  className="bg-[#C97A2B] text-white w-full sm:w-auto px-8 py-3 rounded-xl hover:bg-[#a86422] transition"
           >
             Save Changes
           </button>

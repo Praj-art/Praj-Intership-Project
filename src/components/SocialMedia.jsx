@@ -26,8 +26,8 @@ function SocialMedia() {
   },
 ];
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8">
-      <h1 className="text-3xl font-bold text-[#4A2F22] mb-8">
+    <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
+     <h1 className="text-2xl sm:text-3xl font-bold text-[#4A2F22] mb-6">
         Social Media
       </h1>
 
@@ -35,19 +35,19 @@ function SocialMedia() {
   Stay connected with Café Dashboard on your favorite social media platforms. Follow us for the latest offers, updates, and exciting events.
 </p>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {socialLinks.map((item, index) => (
           <a
             key={index}
             href={item.link}
             target="_blank"
             rel="noreferrer"
-            className={`${item.color} p-6 rounded-2xl shadow-lg hover:scale-105 hover:shadow-xl transition duration-300`}
+            className={`${item.color} p-4 sm:p-6 rounded-2xl shadow-lg hover:scale-105 hover:shadow-xl transition duration-300`}
           >
-            <span className="text-6xl mb-2">{item.icon}</span>
+            <span className="text-5xl sm:text-6xl mb-2">{item.icon}</span>
 
             <div>
-              <h2 className="text-2xl font-bold text-[#4A2F22]">
+              <h2 className="text-xl sm:text-2xl font-bold text-[#4A2F22]">
                 {item.name}
               </h2>
 
@@ -57,7 +57,7 @@ function SocialMedia() {
                    : `Follow us on ${item.name} for updates and offers.`}
              </p>
 
-                 <p className="mt-4 text-sm font-semibold text-[#C97A2B]">
+                 <p className="mt-4 text-xs sm:text-sm font-semibold text-[#C97A2B]">
                   Click here to visit →
                 </p>
             </div>
