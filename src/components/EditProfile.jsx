@@ -1,4 +1,5 @@
 import { useState } from "react";
+import defaultAvatar from "../assets/default-avatar.png";
 
 function EditProfile({ user, setUser }) {
   const [formData, setFormData] = useState(user);
@@ -32,7 +33,7 @@ function EditProfile({ user, setUser }) {
     <div className="relative w-28 h-28 sm:w-32 sm:h-32 mb-4">
 
     <img
-      src={formData.image}
+      src={formData.image || defaultAvatar}
       alt="Profile"
       className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-[#C97A2B] object-cover"
     />

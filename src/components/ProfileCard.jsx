@@ -1,3 +1,5 @@
+import defaultAvatar from "../assets/default-avatar.png";
+
 function ProfileCard({ user, setUser, setActive }) {
   return (
     <div className="bg-white rounded-2xl shadow-lg p-8">
@@ -13,10 +15,10 @@ function ProfileCard({ user, setUser, setActive }) {
   <div className="relative w-32 h-32 md:w-44 md:h-44">
 
     <img
-      src={user.image}
-      alt="Avatar"
-      className="w-32 h-32 md:w-44 md:h-44 rounded-full border-4 border-[#C97A2B] object-cover"
-    />
+  src={user.image || defaultAvatar}
+  alt="Avatar"
+  className="w-full h-full rounded-full border-4 border-[#C97A2B] object-cover"
+/>
     
   </div>
 </div>

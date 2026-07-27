@@ -21,11 +21,11 @@ function ProfileDashboard() {
     return savedUser
       ? JSON.parse(savedUser)
       : {
-          name: "Aarav Patel",
-          email: "aarav.patel@gmail.com",
-          phone: "9123456780",
-          address: "Ahmedabad, Gujarat",
-          image: "https://i.pravatar.cc/200",
+         name: "",
+         email: "",
+         phone: "",
+         address: "",
+         image: null,
         }
   });
 
