@@ -1,3 +1,4 @@
+import defaultAvatar from "../assets/default-avatar.png";
 import { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import TopBar from "../components/TopBar";
@@ -25,7 +26,7 @@ function ProfileDashboard() {
          email: "",
          phone: "",
          address: "",
-         image: null,
+         image: defaultAvatar,
         }
   });
 
