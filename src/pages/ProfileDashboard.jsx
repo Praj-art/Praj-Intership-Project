@@ -19,15 +19,25 @@ function ProfileDashboard() {
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("user");
 
-    return savedUser
-      ? JSON.parse(savedUser)
-      : {
-         name: "",
-         email: "",
-         phone: "",
-         address: "",
-         image: defaultAvatar,
-        }
+    if (savedUser) {
+  const data = JSON.parse(savedUser);
+
+  return {
+    name: data.name || "",
+    email: data.email || "",
+    phone: data.phone || "",
+    address: data.address || "",
+    image: data.image ? data.image : defaultAvatar,
+  };
+}
+
+return {
+  name: "",
+  email: "",
+  phone: "",
+  address: "",
+  image: defaultAvatar,
+};
   });
 
   useEffect(() => {
