@@ -96,7 +96,7 @@ return {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#F8F5F2]">
+    <div className="relative min-h-screen bg-[#F8F5F2] md:flex">
   <Sidebar
   active={active}
   setActive={setActive}
@@ -107,9 +107,11 @@ return {
 />
 
   <div
-  className={`flex-1 p-3 sm:p-5 md:p-8 overflow-x-hidden transition-all duration-300 ${
-  sidebarOpen ? "ml-0" : collapsed ? "md:ml-20" : "md:ml-80"
-}`}
+  className={`w-full p-3 sm:p-5 md:p-8 overflow-x-hidden transition-all duration-300 ${
+    collapsed
+      ? "md:ml-20"
+      : "md:ml-80"
+  }`}
 >
     <TopBar user={user} />
 

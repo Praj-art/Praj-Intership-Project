@@ -54,7 +54,7 @@ useEffect(() => {
 
   return (
     <div
-  className={`${
+  className={`fixed md:fixed ${
   isMobile
     ? sidebarOpen
       ? "fixed top-0 left-0 translate-x-0 z-50 w-80 h-screen"
