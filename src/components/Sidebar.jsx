@@ -26,9 +26,22 @@ const menuItems = [
   { name: "Logout", icon: <FaSignOutAlt /> },
 ];
 
-function Sidebar({ active, setActive }) {
-  const [collapsed, setCollapsed] = useState(false);
-const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+function Sidebar({
+  active,
+  setActive,
+  sidebarOpen,
+  setSidebarOpen,
+  collapsed,
+  setCollapsed,
+}) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+useEffect(() => {
+  if (!isMobile) return;
+
+  setCollapsed(!sidebarOpen);
+}, [sidebarOpen, isMobile]);
+
 useEffect(() => {
   const handleResize = () => {
     setIsMobile(window.innerWidth < 768);
@@ -41,26 +54,32 @@ useEffect(() => {
 
   return (
     <div
-      className={`${
-        isMobile
-  ? collapsed
-    ? "fixed top-0 left-0 z-50 w-20 h-screen"
-    : "fixed top-0 left-0 z-50 w-screen h-screen"
-  : collapsed
-    ? "w-20"
-    : "w-80"
-      } bg-gradient-to-b from-[#2B1A12] via-[#4A2F22] to-[#2B1A12] min-h-screen text-white shadow-xl transition-all duration-300 relative`}
-    >
+  className={`${
+  isMobile
+    ? sidebarOpen
+      ? "fixed top-0 left-0 translate-x-0 z-50 w-80 h-screen"
+      : "fixed top-0 left-0 -translate-x-full z-50 w-80 h-screen"
+    : collapsed
+      ? "w-20"
+      : "w-80"
+} bg-gradient-to-b from-[#2B1A12] via-[#4A2F22] to-[#2B1A12] min-h-screen text-white shadow-xl transition-all duration-300 relative`}
+>
       {/* Toggle Button */}
       <button
         onClick={() => {
   if (isMobile) {
-    setCollapsed(!collapsed);
+    setSidebarOpen(!sidebarOpen);
   } else {
     setCollapsed(!collapsed);
   }
 }}
-        className="absolute top-5 right-5 text-2xl text-white hover:text-[#C97A2B] transition-all"
+        className={`absolute top-5 text-2xl text-white hover:text-[#C97A2B] transition-all ${
+  isMobile
+    ? "right-5"
+    : collapsed
+      ? "left-1/2 -translate-x-1/2"
+      : "right-5"
+}`}
              >
             ☰
          </button>
@@ -73,7 +92,7 @@ useEffect(() => {
     className={`${collapsed ? "w-10 h-10" : "w-16 h-16"} object-contain`}
   />
 </div>
-        {(!collapsed || !isMobile) && (
+        {!collapsed && (
           <>
             <h1 className="text-4xl font-semibold tracking-wide font-serif">
               Café Coffee
@@ -97,8 +116,8 @@ useEffect(() => {
   setActive(item.name);
 
   if (isMobile) {
-    setCollapsed(true);
-  }
+    setSidebarOpen(false);
+}
 }}
             className={`w-full flex items-center ${
   collapsed ? "justify-center" : "justify-start"
@@ -111,7 +130,7 @@ useEffect(() => {
             <>
   <span className="text-lg">{item.icon}</span>
 
-  {(!collapsed || !isMobile) && (
+  {!collapsed && (
     <span className="ml-3">{item.name}</span>
   )}
 </>
@@ -119,7 +138,7 @@ useEffect(() => {
         ))}
       </div>
 
-      {(!collapsed || !isMobile) && (
+      {!collapsed && (
         <div className="absolute bottom-4 left-4 right-4">
           <img
   src={sidebarPoster}

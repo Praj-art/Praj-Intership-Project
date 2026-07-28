@@ -16,6 +16,8 @@ import StatsCards from "../components/StatsCards";
 function ProfileDashboard() {
 
   const [active, setActive] = useState("My Profile");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+   const [collapsed, setCollapsed] = useState(false);
 
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("user");
@@ -95,9 +97,20 @@ return {
 
   return (
     <div className="flex min-h-screen bg-[#F8F5F2]">
-  <Sidebar active={active} setActive={setActive} />
+  <Sidebar
+  active={active}
+  setActive={setActive}
+  sidebarOpen={sidebarOpen}
+  setSidebarOpen={setSidebarOpen}
+  collapsed={collapsed}
+  setCollapsed={setCollapsed}
+/>
 
-  <div className="flex-1 p-3 sm:p-5 md:p-8 overflow-x-hidden">
+  <div
+  className={`flex-1 p-3 sm:p-5 md:p-8 overflow-x-hidden transition-all duration-300 ${
+  sidebarOpen ? "ml-0" : collapsed ? "md:ml-20" : "md:ml-80"
+}`}
+>
     <TopBar user={user} />
 
     <div className="mt-4 md:mt-6">
