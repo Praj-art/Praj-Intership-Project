@@ -36,11 +36,11 @@ function StatsCards({ setActive }) {
 
   return (
   <>
-    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 mt-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mt-8">
       {cards.map((card) => (
         <div
           key={card.title}
-          className="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition-all"
+          className="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition-all flex flex-col justify-between min-h-[220px]"
         >
           <div className="w-12 h-12 rounded-full bg-[#F5EFE7] flex items-center justify-center text-[#C97A2B] text-xl mb-4">
             {card.icon}
@@ -64,7 +64,7 @@ function StatsCards({ setActive }) {
       ))}
     </div>
 
-    <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 mt-8 px-6 sm:px-10 py-8 flex flex-col lg:flex-row items-center lg:justify-between gap-8">
+    <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 mt-8 p-6 sm:p-8 md:p-10 flex flex-col lg:flex-row items-center lg:justify-between gap-8">
       <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-16 w-full">
         <h2 className="text-4xl font-bold text-[#4A2F22]">
           About Us
@@ -82,7 +82,7 @@ function StatsCards({ setActive }) {
 />
   <button
   onClick={() => setActive("About Us")}
-  className="bg-[#C97A2B] hover:bg-[#b86d23] text-white px-8 py-3 rounded-xl font-semibold shadow-md hover:scale-105 transition-all"
+ className="bg-[#C97A2B] hover:bg-[#b86d23] text-white px-6 sm:px-8 py-3 rounded-xl font-semibold shadow-md hover:scale-105 transition-all w-full sm:w-auto"
 >
   Know More →
 </button>

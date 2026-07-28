@@ -2,17 +2,17 @@ import defaultAvatar from "../assets/default-avatar.png";
 
 function ProfileCard({ user, setUser, setActive }) {
   return (
-    <div className="bg-white rounded-3xl shadow-2xl border border-[#F1E5D8] p-8 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+    <div className="bg-white rounded-3xl shadow-2xl border border-[#F1E5D8] p-4 sm:p-6 lg:p-8 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 overflow-hidden">
 
-      <h1 className="text-4xl font-bold text-[#4A2F22] mb-8 tracking-tight">
+      <h1 className="text-3xl sm:text-4xl font-bold text-[#4A2F22] mb-6 lg:mb-8 tracking-tight text-center lg:text-left">
         My Profile
       </h1>
 
-      <div className="flex flex-col lg:flex-row gap-12">
+      <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 w-full">
 
         {/* Avatar */}
-<div className="flex justify-center">
-  <div className="relative w-48 h-48 md:w-52 md:h-52">
+<div className="flex justify-center w-full lg:w-auto">
+  <div className="relative w-28 h-28 sm:w-36 sm:h-36 lg:w-52 lg:h-52">
 
     <img
   src={user.image || defaultAvatar}
@@ -24,11 +24,11 @@ function ProfileCard({ user, setUser, setActive }) {
 </div>
 
         {/* User Information */}
-        <div className="flex-1">
+        <div className="flex-1 w-full min-w-0">
 
-         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+         <div className="grid w-full grid-cols-1 sm:grid-cols-2 gap-4">
 
-            <div className="bg-[#FCFAF7] border border-[#E9D8C6] p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
+            <div className="bg-[#FCFAF7] border border-[#E9D8C6] p-4 sm:p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 min-w-0">
               <h3 className="text-sm font-semibold uppercase tracking-wide text-[#8B6B52]">
                 Name
               </h3>
@@ -72,7 +72,7 @@ function ProfileCard({ user, setUser, setActive }) {
 
           <button
   onClick={() => setActive("Edit Profile")}
-  className="mt-8 w-full sm:w-auto bg-[#C97A2B] hover:bg-[#B56B22] text-white px-10 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+  className="mt-6 w-full sm:w-auto bg-[#C97A2B] hover:bg-[#B56B22] text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
 >
   Edit Profile
 </button>

@@ -37,10 +37,10 @@ function Sidebar({
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
 useEffect(() => {
-  if (!isMobile) return;
-
-  setCollapsed(!sidebarOpen);
-}, [sidebarOpen, isMobile]);
+  if (isMobile) {
+    setCollapsed(false);
+  }
+}, [isMobile]);
 
 useEffect(() => {
   const handleResize = () => {
@@ -54,15 +54,15 @@ useEffect(() => {
 
   return (
     <div
-  className={`fixed md:fixed ${
-  isMobile
-    ? sidebarOpen
-      ? "fixed top-0 left-0 translate-x-0 z-50 w-80 h-screen"
-      : "fixed top-0 left-0 -translate-x-full z-50 w-80 h-screen"
-    : collapsed
-      ? "w-20"
-      : "w-80"
-} bg-gradient-to-b from-[#2B1A12] via-[#4A2F22] to-[#2B1A12] min-h-screen text-white shadow-xl transition-all duration-300 relative`}
+  className={`${
+    isMobile
+      ? `fixed top-0 left-0 z-50 w-72 h-screen transform transition-transform duration-300 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`
+      : `fixed top-0 left-0 h-screen transition-all duration-300 ${
+          collapsed ? "w-20" : "w-80"
+        }`
+} bg-gradient-to-b from-[#2B1A12] via-[#4A2F22] to-[#2B1A12] text-white shadow-xl`}
 >
       {/* Toggle Button */}
       <button

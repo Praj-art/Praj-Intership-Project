@@ -107,11 +107,9 @@ return {
 />
 
   <div
-  className={`w-full p-3 sm:p-5 md:p-8 overflow-x-hidden transition-all duration-300 ${
-    collapsed
-      ? "md:ml-20"
-      : "md:ml-80"
-  }`}
+  className={`flex-1 p-3 sm:p-5 md:p-8 overflow-x-hidden transition-all duration-300 ${
+  collapsed ? "md:ml-20" : "md:ml-80"
+}`}
 >
     <TopBar user={user} />
 
