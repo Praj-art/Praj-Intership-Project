@@ -35,7 +35,6 @@ function Logout() {
         </>
       ) : (
         <>
-          <div className="text-5xl sm:text-7xl mb-6 animate-bounce">✅</div>
 
           <h2 className="text-2xl sm:text-3xl font-bold text-green-600 mb-4">
             Logged Out Successfully

@@ -48,17 +48,17 @@ import { useState } from "react";
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
-      <h1 className="text-2xl sm:text-3xl font-bold text-[#4A2F22] mb-6">
+    <div className="bg-white rounded-3xl shadow-2xl border border-[#F1E5D8] p-6 sm:p-8 md:p-10 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+      <h1 className="text-4xl font-bold text-[#4A2F22] mb-10 tracking-tight">
         Change Password
       </h1>
 
       <form
         onSubmit={handleSubmit}
-        className="max-w-xl space-y-6 w-full"
+        className="max-w-3xl w-full space-y-8"
       >
-        <div>
-  <label className="block mb-2 font-semibold">
+       <div className="space-y-2">
+  <label className="block mb-2 text-sm font-semibold uppercase tracking-wide text-[#8B6B52]">
     Old Password
   </label>
 
@@ -67,12 +67,12 @@ import { useState } from "react";
     name="oldPassword"
     value={formData.oldPassword}
     onChange={handleChange}
-    className="w-full border rounded-lg p-3 text-sm sm:text-base"
-    placeholder="Enter old password"
+    className="w-full rounded-xl border border-[#E7D8CC] bg-[#FCFAF8] px-4 py-3 text-[#4A2F22] focus:border-[#C97A2B] focus:ring-2 focus:ring-[#F4D2A8] outline-none transition"
+    placeholder="Enter your current password"
   />
   <button
   type="button"
-  className="text-sm text-[#C97A2B] mt-2"
+  className="mt-2 text-sm font-medium text-[#C97A2B] hover:text-[#A85F1F] transition-colors cursor-pointer"
   onClick={() =>
     setShowPassword({
       ...showPassword,
@@ -84,8 +84,8 @@ import { useState } from "react";
 </button>
 </div>
 
-<div>
-  <label className="block mb-2 font-semibold">
+<div className="space-y-2">
+  <label className="block mb-2 text-sm font-semibold uppercase tracking-wide text-[#8B6B52]">
     New Password
   </label>
 
@@ -94,13 +94,13 @@ import { useState } from "react";
     name="newPassword"
     value={formData.newPassword}
     onChange={handleChange}
-    className="w-full border rounded-lg p-3 text-sm sm:text-base"
-    placeholder="Enter new password"
+    className="w-full rounded-xl border border-[#E7D8CC] bg-[#FCFAF8] px-4 py-3 text-[#4A2F22] focus:border-[#C97A2B] focus:ring-2 focus:ring-[#F4D2A8] outline-none transition"
+    placeholder="Create a new password"
   />
 </div>
 <button
   type="button"
-  className="text-sm text-[#C97A2B] mt-2"
+  className="mt-2 text-sm font-medium text-[#C97A2B] hover:text-[#A85F1F] transition-colors cursor-pointer"
   onClick={() =>
     setShowPassword({
       ...showPassword,
@@ -110,8 +110,12 @@ import { useState } from "react";
 >
   {showPassword.new ? "Hide Password" : "Show Password"}
 </button>
-<div>
-  <label className="block mb-2 font-semibold">
+
+<p className="mt-2 text-xs text-[#8B6B52]">
+  Use at least 8 characters with letters, numbers, and a special symbol.
+</p>
+<div className="space-y-2">
+  <label className="block mb-2 text-sm font-semibold uppercase tracking-wide text-[#8B6B52]">
     Confirm Password
   </label>
 
@@ -120,7 +124,7 @@ import { useState } from "react";
     name="confirmPassword"
     value={formData.confirmPassword}
     onChange={handleChange}
-    className="w-full border rounded-lg p-3 text-sm sm:text-base"
+    className="w-full rounded-xl border border-[#E7D8CC] bg-[#FCFAF8] px-4 py-3 text-[#4A2F22] focus:border-[#C97A2B] focus:ring-2 focus:ring-[#F4D2A8] outline-none transition"
     placeholder="Confirm new password"
   />
 </div>
@@ -128,7 +132,7 @@ import { useState } from "react";
 <div className="mt-8">
 <button
   type="button"
-  className="text-sm text-[#C97A2B] mt-2"
+  className="mt-2 text-sm font-medium text-[#C97A2B] hover:text-[#A85F1F] transition-colors cursor-pointer"
   onClick={() =>
     setShowPassword({
       ...showPassword,
@@ -142,10 +146,10 @@ import { useState } from "react";
  
 {/* Confirm Password */}
 
-<div className="mt-6">
+<div className="mt-8 flex justify-start">
   <button
     type="submit"
-    className="bg-[#C97A2B] text-white w-full sm:w-auto px-8 py-3 rounded-xl hover:bg-[#A85F1F] transition"
+    className="bg-[#C97A2B] text-white px-10 py-4 rounded-xl font-semibold shadow-lg hover:bg-[#B56B22] hover:shadow-xl hover:scale-105 transition-all duration-300"
   >
     Update Password
   </button>

@@ -11,6 +11,7 @@ import SocialMedia from "../components/SocialMedia";
 import HelpSupport from "../components/HelpSupport";
 import AboutUs from "../components/AboutUs";
 import Logout from "../components/Logout";
+import StatsCards from "../components/StatsCards";
 
 function ProfileDashboard() {
 
@@ -37,7 +38,7 @@ return {
   phone: "",
   address: "",
   image: defaultAvatar,
-};
+ };
   });
 
   useEffect(() => {
@@ -48,12 +49,16 @@ return {
        switch (active) {
         case "My Profile":
         return (
-       <ProfileCard
-         user={user}
-         setUser={setUser}
-         setActive={setActive}
-      />
-     );
+       <>
+      <ProfileCard
+        user={user}
+        setUser={setUser}
+        setActive={setActive}
+       />
+
+      <StatsCards setActive={setActive} />
+    </>
+  );
       case "Edit Profile":
         return <EditProfile user={user} setUser={setUser} />;
       case "Change Password":
@@ -72,7 +77,7 @@ return {
         return <HelpSupport />;
 
       case "About Us":
-        return <AboutUs />
+    return <AboutUs setActive={setActive} />;
 
       case "Logout":
         return <Logout />;

@@ -20,30 +20,30 @@ function EditProfile({ user, setUser }) {
 };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
-      <h1 className="text-3xl font-bold text-[#4A2F22] mb-8">
+    <div className="bg-white rounded-3xl shadow-2xl border border-[#F1E5D8] p-6 sm:p-8 md:p-10 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
+      <h1 className="text-4xl font-bold text-[#4A2F22] mb-10 tracking-tight">
         Edit Profile
       </h1>
 
       <form
         onSubmit={handleSubmit}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start"
 >
-         <div className="md:col-span-2 flex flex-col items-start gap-4 mb-8">
-    <div className="relative w-28 h-28 sm:w-32 sm:h-32 mb-4">
+         <div className="md:col-span-2 flex items-center justify-between gap-8 mb-14">
+    <div className="relative w-44 h-44">
 
     <img
       src={formData.image || defaultAvatar}
       alt="Profile"
-      className="w-28 h-28 sm:w-32 sm:h-32 rounded-full border-4 border-[#C97A2B] object-cover"
+      className="w-full h-full rounded-full border-[8px] border-[#C97A2B] object-cover shadow-2xl"
     />
 
     <label
-      htmlFor="profileImage"
-      className="absolute bottom-2 right-2 bg-black text-white w-10 h-10 rounded-full flex items-center justify-center cursor-pointer hover:bg-[#C97A2B] transition"
-    >
-      ✏️
-    </label>
+    htmlFor="profileImage"
+    className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-[#C97A2B] text-white flex items-center justify-center shadow-lg cursor-pointer hover:bg-[#B56B22] transition-all"
+>
+    ✏️
+</label>
 
     <input
       id="profileImage"
@@ -70,17 +70,17 @@ function EditProfile({ user, setUser }) {
 
   </div>
 </div>
-        <div>
-  <h2 className="text-2xl font-bold text-[#4A2F22]">
-    Profile Photo
-  </h2>
+        <div className="flex flex-col justify-center h-full">
+    <h2 className="text-3xl font-bold text-[#4A2F22]">
+        Profile Photo
+    </h2>
 
-  <p className="text-gray-500 mt-2">
-    Click the pencil icon to update your profile picture.
-  </p>
+    <p className="text-gray-500 mt-3 max-w-sm">
+        Click the pencil icon to update your profile picture.
+    </p>
 </div>
-        <div>
-          <label className="block mb-2 font-semibold">
+        <div className="space-y-6">
+          <label className="block mb-2 text-sm font-semibold uppercase tracking-wide text-[#8B6B52]">
             Full Name
           </label>
 
@@ -89,12 +89,12 @@ function EditProfile({ user, setUser }) {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full border rounded-lg p-3"
+            className="w-full rounded-xl border border-[#E7D8CC] bg-[#FCFAF8] px-4 py-3 text-[#4A2F22] focus:border-[#C97A2B] focus:ring-2 focus:ring-[#F5D6B3] outline-none transition-all"
           />
         </div>
 
-        <div>
-          <label className="block mb-2 font-semibold">
+        <div className="space-y-6">
+          <label className="block mb-2 text-sm font-semibold uppercase tracking-wide text-[#8B6B52]">
             Email
           </label>
 
@@ -103,12 +103,12 @@ function EditProfile({ user, setUser }) {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full border rounded-lg p-3"
+            className="w-full rounded-xl border border-[#E7D8CC] bg-[#FCFAF8] px-4 py-3 text-[#4A2F22] focus:border-[#C97A2B] focus:ring-2 focus:ring-[#F5D6B3] outline-none transition-all"
           />
         </div>
 
-        <div>
-          <label className="block mb-2 font-semibold">
+        <div className="space-y-6">
+          <label className="block mb-2 text-sm font-semibold uppercase tracking-wide text-[#8B6B52]">
             Phone
           </label>
 
@@ -117,12 +117,12 @@ function EditProfile({ user, setUser }) {
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="w-full border rounded-lg p-3"
+            className="w-full rounded-xl border border-[#E7D8CC] bg-[#FCFAF8] px-4 py-3 text-[#4A2F22] focus:border-[#C97A2B] focus:ring-2 focus:ring-[#F5D6B3] outline-none transition-all"
           />
         </div>
 
-        <div>
-          <label className="block mb-2 font-semibold">
+        <div className="space-y-6">
+          <label className="block mb-2 text-sm font-semibold uppercase tracking-wide text-[#8B6B52]">
             Address
           </label>
 
@@ -131,14 +131,14 @@ function EditProfile({ user, setUser }) {
             name="address"
             value={formData.address}
             onChange={handleChange}
-            className="w-full border rounded-lg p-3"
+            className="w-full rounded-xl border border-[#E7D8CC] bg-[#FCFAF8] px-4 py-3 text-[#4A2F22] focus:border-[#C97A2B] focus:ring-2 focus:ring-[#F5D6B3] outline-none transition-all"
           />
         </div>
 
-        <div className="md:col-span-2 flex justify-center md:justify-start">
+        <div className="md:col-span-2 flex justify-start mt-6">
           <button
   type="submit"
-  className="bg-[#C97A2B] text-white w-full sm:w-auto px-8 py-3 rounded-xl hover:bg-[#a86422] transition"
+  className="bg-[#C97A2B] text-white px-10 py-3 rounded-xl font-semibold shadow-lg hover:bg-[#B56B22] hover:scale-105 transition-all duration-300"
           >
             Save Changes
           </button>

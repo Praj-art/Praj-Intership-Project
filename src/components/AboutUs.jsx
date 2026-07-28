@@ -1,4 +1,4 @@
-function AboutUs() {
+function AboutUs({ setActive }) {
   return (
     <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
       <h1 className="text-2xl sm:text-3xl font-bold text-[#4A2F22] mb-6">
@@ -66,7 +66,16 @@ function AboutUs() {
 <p className="text-base sm:text-lg">
   ✉️ support@cafedashboard.com
 </p>
+<div className="mt-8 flex justify-end">
+  <button
+    onClick={() => setActive("Contact Us")}
+    className="bg-[#C97A2B] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[#B56B22] transition-all duration-300"
+  >
+    Contact Us
+  </button>
+</div>
       </div>
+      
     </div>
   );
 }
