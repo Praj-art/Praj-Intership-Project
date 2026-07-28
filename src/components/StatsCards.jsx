@@ -64,13 +64,13 @@ function StatsCards({ setActive }) {
       ))}
     </div>
 
-    <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 mt-8 px-10 py-8 flex items-center justify-between min-h-[240px]">
-      <div className="flex items-center gap-16">
+    <div className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 mt-8 px-6 sm:px-10 py-8 flex flex-col lg:flex-row items-center lg:justify-between gap-8">
+      <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-16 w-full">
         <h2 className="text-4xl font-bold text-[#4A2F22]">
           About Us
         </h2>
 
-        <p className="text-gray-600 mt-5 max-w-xl leading-7">
+        <p className="text-gray-600 mt-5 max-w-xl leading-7 text-center lg:text-left">
           We are passionate about serving the finest coffee and creating memorable experiences for every customer.
         </p>
       </div>
