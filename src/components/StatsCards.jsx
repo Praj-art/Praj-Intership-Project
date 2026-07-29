@@ -3,11 +3,19 @@ import {
   FaMapMarkerAlt,
   FaShareAlt,
   FaQuestionCircle,
+  FaLock,
+  FaSignOutAlt,
 } from "react-icons/fa";
 import coffeeCup from "../assets/coffee-cup.png";
 
 function StatsCards({ setActive }) {
   const cards = [
+    {
+  title: "Change Password",
+  description: "Update your password securely.",
+  icon: <FaLock />,
+  button: "Change Password",
+},
     {
       title: "Contact Us",
       description: "We're here to help with your questions.",
@@ -32,6 +40,12 @@ function StatsCards({ setActive }) {
       icon: <FaQuestionCircle />,
       button: "Get Help",
     },
+{
+  title: "Logout",
+  description: "Sign out from your account safely.",
+  icon: <FaSignOutAlt />,
+  button: "Logout",
+},
   ];
 
   return (

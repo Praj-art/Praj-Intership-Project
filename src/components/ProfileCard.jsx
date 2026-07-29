@@ -1,6 +1,7 @@
 import defaultAvatar from "../assets/default-avatar.png";
 
 function ProfileCard({ user, setUser, setActive }) {
+  console.log(user);
   return (
     <div className="bg-white rounded-3xl shadow-2xl border border-[#F1E5D8] p-4 sm:p-6 lg:p-8 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 overflow-hidden">
 
@@ -15,7 +16,11 @@ function ProfileCard({ user, setUser, setActive }) {
   <div className="relative w-28 h-28 sm:w-36 sm:h-36 lg:w-52 lg:h-52">
 
     <img
-  src={user.image || defaultAvatar}
+  src={
+    user.image && user.image !== "defaultAvatar"
+      ? user.image
+      : defaultAvatar
+  }
   alt="Avatar"
   className="w-full h-full rounded-full border-[6px] border-[#C97A2B] object-cover shadow-xl"
 />

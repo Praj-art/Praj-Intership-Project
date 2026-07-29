@@ -1,8 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import defaultAvatar from "../assets/default-avatar.png";
 
 function EditProfile({ user, setUser, setActive }) {
-  const [formData, setFormData] = useState(user);
+  const [formData, setFormData] = useState({
+  ...user,
+  image: user.image || defaultAvatar,
+});
+useEffect(() => {
+  setFormData({
+    ...user,
+    image: user.image || defaultAvatar,
+  });
+}, [user]);
 
   const handleChange = (e) => {
     setFormData({
@@ -14,7 +23,12 @@ function EditProfile({ user, setUser, setActive }) {
   const handleSubmit = (e) => {
   e.preventDefault();
 
-  setUser(formData);
+  console.log(formData.image);
+
+  setUser({
+    ...formData,
+    image: formData.image || defaultAvatar,
+  });
 
   alert("Profile Updated Successfully!");
 
@@ -35,10 +49,15 @@ function EditProfile({ user, setUser, setActive }) {
     <div className="relative w-44 h-44">
 
     <img
-      src={formData.image || defaultAvatar}
-      alt="Profile"
-      className="w-full h-full rounded-full border-[8px] border-[#C97A2B] object-cover shadow-2xl"
-    />
+  src={
+    formData.image &&
+    formData.image !== "defaultAvatar"
+      ? formData.image
+      : defaultAvatar
+  }
+  alt="Profile"
+  className="w-full h-full rounded-full border-[8px] border-[#C97A2B] object-cover shadow-2xl"
+/>
 
     <label
     htmlFor="profileImage"
@@ -59,13 +78,12 @@ function EditProfile({ user, setUser, setActive }) {
 
         const reader = new FileReader();
 
-        reader.onload = () => {
-          setFormData({
-            ...formData,
-            image: reader.result,
-          });
-        };
-
+       reader.onload = () => {
+  setFormData((prev) => ({
+    ...prev,
+    image: reader.result,
+  }));
+}; 
         reader.readAsDataURL(file);
       }}
     />

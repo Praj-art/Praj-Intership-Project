@@ -30,7 +30,7 @@ function ProfileDashboard() {
     email: data.email || "",
     phone: data.phone || "",
     address: data.address || "",
-    image: data.image ? data.image : defaultAvatar,
+    image: data.image || defaultAvatar,
   };
 }
 
@@ -40,7 +40,7 @@ return {
   phone: "",
   address: "",
   image: defaultAvatar,
- };
+};
   });
 
   useEffect(() => {
@@ -84,10 +84,15 @@ return {
       return <HelpSupport setActive={setActive} />;
 
       case "About Us":
-    return <AboutUs setActive={setActive} />;
+      return <AboutUs setActive={setActive} />;
 
       case "Logout":
-        return <Logout />;
+      return (
+      <Logout
+      setActive={setActive}
+      setUser={setUser}
+    />
+  );
 
       default:
         return (
