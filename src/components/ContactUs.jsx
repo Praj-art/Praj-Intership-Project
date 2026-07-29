@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function ContactUs() {
+function ContactUs({ setActive }) {
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -23,6 +23,8 @@ function ContactUs() {
     }
 
     alert("Message sent successfully!");
+
+    setActive("My Profile");
 
     setForm({
       name: "",
@@ -91,9 +93,45 @@ function ContactUs() {
           Send Message
         </button>
          </div>
+         <div className="bg-[#F8F5F2] rounded-2xl p-6 sm:p-8 shadow-md mt-10">
+  <h2 className="text-2xl font-bold text-[#4A2F22] mb-4">
+    Contact Information
+  </h2>
+
+  <p className="text-gray-600 mb-5">
+    We'd love to welcome you for a cup of coffee and a relaxing experience.
+  </p>
+
+  <div className="space-y-4 text-[#4A2F22]">
+  <p className="flex items-center gap-3 text-lg">
+    <span className="text-[#C97A2B] text-xl">📍</span>
+    FC Road, Shivajinagar, Pune
+  </p>
+
+  <p className="flex items-center gap-3 text-lg">
+    <span className="text-[#C97A2B] text-xl">📞</span>
+    +91 98765 43210
+  </p>
+
+  <p className="flex items-center gap-3 text-lg">
+    <span className="text-[#C97A2B] text-xl">✉️</span>
+    support@cafedashboard.com
+  </p>
+</div>
+</div>
+<div className="mt-8 flex justify-center sm:justify-end">
+  <button
+    type="button"
+    onClick={() => setActive("My Profile")}
+    className="bg-[#C97A2B] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[#B56B22] transition-all duration-300"
+  >
+    ← Back to My Profile
+  </button>
+</div>
       </form>
     </div>
   );
+  
 }
 
 export default ContactUs;

@@ -1,4 +1,4 @@
-function HelpSupport() {
+function HelpSupport({ setActive }) {
   const faqs = [
     {
       question: "How do I edit my profile?",
@@ -60,6 +60,15 @@ function HelpSupport() {
           📞 +91 98765 43210
         </p>
       </div>
+      <div className="mt-8 flex justify-center sm:justify-end">
+  <button
+    type="button"
+    onClick={() => setActive("My Profile")}
+    className="bg-[#C97A2B] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[#B56B22] transition-all duration-300"
+  >
+    ← Back to My Profile
+  </button>
+</div>
     </div>
   );
 }

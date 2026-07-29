@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-  function ChangePassword() {
+  function ChangePassword({ setActive }) {
     const [formData, setFormData] = useState({
         oldPassword: "",
         newPassword: "",
@@ -40,11 +40,13 @@ import { useState } from "react";
 
     alert("Password Updated Successfully!");
 
-    setFormData({
-      oldPassword: "",
-      newPassword: "",
-      confirmPassword: "",
-    });
+setFormData({
+  oldPassword: "",
+  newPassword: "",
+  confirmPassword: "",
+});
+
+setActive("My Profile");
   };
 
   return (

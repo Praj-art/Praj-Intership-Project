@@ -1,7 +1,7 @@
 import { useState } from "react";
 import defaultAvatar from "../assets/default-avatar.png";
 
-function EditProfile({ user, setUser }) {
+function EditProfile({ user, setUser, setActive }) {
   const [formData, setFormData] = useState(user);
 
   const handleChange = (e) => {
@@ -17,6 +17,8 @@ function EditProfile({ user, setUser }) {
   setUser(formData);
 
   alert("Profile Updated Successfully!");
+
+  setActive("My Profile");
 };
 
   return (

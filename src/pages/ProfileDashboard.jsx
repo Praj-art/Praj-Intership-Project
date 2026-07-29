@@ -62,21 +62,26 @@ return {
     </>
   );
       case "Edit Profile":
-        return <EditProfile user={user} setUser={setUser} />;
+  return (
+    <EditProfile
+      user={user}
+      setUser={setUser}
+      setActive={setActive}
+    />
+  );
       case "Change Password":
-        return <ChangePassword />;
-
+      return <ChangePassword setActive={setActive} />;
       case "Contact Us":
-        return <ContactUs />;
+      return <ContactUs setActive={setActive} />;
 
       case "Google Maps":
-        return <GoogleMaps />;
+      return <GoogleMaps setActive={setActive} />;
 
       case "Social Media":
-        return <SocialMedia />;
+      return <SocialMedia setActive={setActive} />;
 
       case "Help & Support":
-        return <HelpSupport />;
+      return <HelpSupport setActive={setActive} />;
 
       case "About Us":
     return <AboutUs setActive={setActive} />;

@@ -46,36 +46,15 @@ function AboutUs({ setActive }) {
           <li>Fast customer service</li>
         </ul>
       </div>
-
-      {/* Contact */}
-      ]<div className="bg-[#F8F5F2] rounded-2xl p-4 sm:p-6 shadow-md">
-        <h2 className="text-xl sm:text-2xl font-bold text-[#4A2F22] mb-4">
-          Contact Information
-        </h2>
-        <p className="text-sm sm:text-base text-gray-600 mb-5">
-         We'd love to welcome you for a cup of coffee and a relaxing experience.
-        </p>
-        <p className="mb-2 text-base sm:text-lg">
-  📍 FC Road, Shivajinagar, Pune
-</p>
-
-<p className="mb-2 text-base sm:text-lg">
-  📞 +91 98765 43210
-</p>
-
-<p className="text-base sm:text-lg">
-  ✉️ support@cafedashboard.com
-</p>
-<div className="mt-8 flex justify-end">
+      <div className="mt-8 flex justify-center sm:justify-end">
   <button
-    onClick={() => setActive("Contact Us")}
+    type="button"
+    onClick={() => setActive("My Profile")}
     className="bg-[#C97A2B] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[#B56B22] transition-all duration-300"
   >
-    Contact Us
+    ← Back to My Profile
   </button>
 </div>
-      </div>
-      
     </div>
   );
 }

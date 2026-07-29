@@ -1,4 +1,4 @@
-function GoogleMaps() {
+function GoogleMaps({ setActive }) {
   return (
     <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
       <h1 className="text-2xl sm:text-3xl font-bold text-[#4A2F22] mb-6">
@@ -45,7 +45,17 @@ function GoogleMaps() {
         <p>
           ✉ support@cafedashboard.com
         </p>
+            </div>
+
+      <div className="mt-8 flex justify-end">
+        <button
+          onClick={() => setActive("My Profile")}
+          className="bg-[#C97A2B] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[#B56B22] transition-all duration-300"
+        >
+          ← Back to My Profile
+        </button>
       </div>
+
     </div>
   );
 }
