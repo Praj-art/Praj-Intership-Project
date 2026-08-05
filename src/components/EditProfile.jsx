@@ -1,169 +1,131 @@
 import { useState, useEffect } from "react";
 import defaultAvatar from "../assets/default-avatar.png";
+import { FaCamera, FaCheck, FaArrowLeft } from "react-icons/fa";
 
 function EditProfile({ user, setUser, setActive }) {
   const [formData, setFormData] = useState({
-  ...user,
-  image: user.image || defaultAvatar,
-});
-useEffect(() => {
-  setFormData({
     ...user,
     image: user.image || defaultAvatar,
   });
-}, [user]);
+  const [saved, setSaved] = useState(false);
+
+  useEffect(() => {
+    setFormData({ ...user, image: user.image || defaultAvatar });
+  }, [user]);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
-  e.preventDefault();
+    e.preventDefault();
+    setUser({ ...formData, image: formData.image || defaultAvatar });
+    setSaved(true);
+    setTimeout(() => {
+      setSaved(false);
+      setActive("My Profile");
+    }, 1200);
+  };
 
-  console.log(formData.image);
-
-  setUser({
-    ...formData,
-    image: formData.image || defaultAvatar,
-  });
-
-  alert("Profile Updated Successfully!");
-
-  setActive("My Profile");
-};
+  const fields = [
+    { label: "Full Name",    name: "name",    type: "text",  placeholder: "Enter your full name" },
+    { label: "Email",        name: "email",   type: "email", placeholder: "Enter your email address" },
+    { label: "Phone Number", name: "phone",   type: "text",  placeholder: "Enter your phone number" },
+    { label: "Address",      name: "address", type: "text",  placeholder: "Enter your address" },
+  ];
 
   return (
-    <div className="bg-white rounded-3xl shadow-2xl border border-[#F1E5D8] p-6 sm:p-8 md:p-10 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300">
-      <h1 className="text-4xl font-bold text-[#4A2F22] mb-10 tracking-tight">
-        Edit Profile
-      </h1>
+    <div className="glass-card rounded-3xl p-6 sm:p-8 md:p-10 fade-in-up">
 
-      <form
-        onSubmit={handleSubmit}
-        className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start"
->
-         <div className="md:col-span-2 flex items-center justify-between gap-8 mb-14">
-    <div className="relative w-44 h-44">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
+        <div>
+          <h1 className="section-title text-3xl sm:text-4xl font-bold text-[#4A2F22] pb-2">
+            Edit Profile
+          </h1>
+          <p className="text-sm text-[#8B6B52] mt-3">Update your personal information</p>
+        </div>
+        <button
+          type="button"
+          onClick={() => setActive("My Profile")}
+          className="flex items-center gap-2 text-sm font-semibold text-[#8B6B52] hover:text-[#4A2F22] transition-colors"
+        >
+          <FaArrowLeft className="text-xs" /> Back to Profile
+        </button>
+      </div>
 
-    <img
-  src={
-    formData.image &&
-    formData.image !== "defaultAvatar"
-      ? formData.image
-      : defaultAvatar
-  }
-  alt="Profile"
-  className="w-full h-full rounded-full border-[8px] border-[#C97A2B] object-cover shadow-2xl"
-/>
-
-    <label
-    htmlFor="profileImage"
-    className="absolute bottom-3 right-3 w-10 h-10 rounded-full bg-[#C97A2B] text-white flex items-center justify-center shadow-lg cursor-pointer hover:bg-[#B56B22] transition-all"
->
-    ✏️
-</label>
-
-    <input
-      id="profileImage"
-      type="file"
-      accept="image/*"
-      hidden
-      onChange={(e) => {
-        const file = e.target.files[0];
-
-        if (!file) return;
-
-        const reader = new FileReader();
-
-       reader.onload = () => {
-  setFormData((prev) => ({
-    ...prev,
-    image: reader.result,
-  }));
-}; 
-        reader.readAsDataURL(file);
-      }}
-    />
-
-  </div>
-</div>
-        <div className="flex flex-col justify-center h-full">
-    <h2 className="text-3xl font-bold text-[#4A2F22]">
-        Profile Photo
-    </h2>
-
-    <p className="text-gray-500 mt-3 max-w-sm">
-        Click the pencil icon to update your profile picture.
-    </p>
-</div>
-        <div className="space-y-6">
-          <label className="block mb-2 text-sm font-semibold uppercase tracking-wide text-[#8B6B52]">
-            Full Name
-          </label>
-
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full rounded-xl border border-[#E7D8CC] bg-[#FCFAF8] px-4 py-3 text-[#4A2F22] focus:border-[#C97A2B] focus:ring-2 focus:ring-[#F5D6B3] outline-none transition-all"
-          />
+      <form onSubmit={handleSubmit}>
+        {/* Avatar upload row */}
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-10 pb-8 border-b border-[#E8D5C0]">
+          <div className="relative flex-shrink-0">
+            <div className="w-32 h-32 rounded-3xl overflow-hidden border-4 border-[#C97A2B] shadow-xl shadow-[#C97A2B]/20">
+              <img
+                src={formData.image && formData.image !== "defaultAvatar" ? formData.image : defaultAvatar}
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <label
+              htmlFor="profileImage"
+              className="absolute -bottom-2 -right-2 w-10 h-10 rounded-2xl bg-gradient-to-br from-[#C97A2B] to-[#A8621F] text-white flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 transition-transform duration-200"
+            >
+              <FaCamera className="text-sm" />
+            </label>
+            <input
+              id="profileImage"
+              type="file"
+              accept="image/*"
+              hidden
+              onChange={(e) => {
+                const file = e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = () => setFormData((prev) => ({ ...prev, image: reader.result }));
+                reader.readAsDataURL(file);
+              }}
+            />
+          </div>
+          <div>
+            <h2 className="text-xl font-bold text-[#4A2F22]">Profile Photo</h2>
+            <p className="text-sm text-[#8B6B52] mt-1 max-w-xs">
+              Click the camera icon to upload a new profile picture. JPG, PNG or GIF up to 5MB.
+            </p>
+          </div>
         </div>
 
-        <div className="space-y-6">
-          <label className="block mb-2 text-sm font-semibold uppercase tracking-wide text-[#8B6B52]">
-            Email
-          </label>
-
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full rounded-xl border border-[#E7D8CC] bg-[#FCFAF8] px-4 py-3 text-[#4A2F22] focus:border-[#C97A2B] focus:ring-2 focus:ring-[#F5D6B3] outline-none transition-all"
-          />
+        {/* Form Fields */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {fields.map((field) => (
+            <div key={field.name} className="flex flex-col gap-2">
+              <label className="label-sm">{field.label}</label>
+              <input
+                type={field.type}
+                name={field.name}
+                value={formData[field.name]}
+                onChange={handleChange}
+                placeholder={field.placeholder}
+                className="cafe-input"
+              />
+            </div>
+          ))}
         </div>
 
-        <div className="space-y-6">
-          <label className="block mb-2 text-sm font-semibold uppercase tracking-wide text-[#8B6B52]">
-            Phone
-          </label>
-
-          <input
-            type="text"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full rounded-xl border border-[#E7D8CC] bg-[#FCFAF8] px-4 py-3 text-[#4A2F22] focus:border-[#C97A2B] focus:ring-2 focus:ring-[#F5D6B3] outline-none transition-all"
-          />
-        </div>
-
-        <div className="space-y-6">
-          <label className="block mb-2 text-sm font-semibold uppercase tracking-wide text-[#8B6B52]">
-            Address
-          </label>
-
-          <input
-            type="text"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            className="w-full rounded-xl border border-[#E7D8CC] bg-[#FCFAF8] px-4 py-3 text-[#4A2F22] focus:border-[#C97A2B] focus:ring-2 focus:ring-[#F5D6B3] outline-none transition-all"
-          />
-        </div>
-
-        <div className="md:col-span-2 flex justify-start mt-6">
+        {/* Submit */}
+        <div className="mt-8 flex justify-start">
           <button
-  type="submit"
-  className="bg-[#C97A2B] text-white px-10 py-3 rounded-xl font-semibold shadow-lg hover:bg-[#B56B22] hover:scale-105 transition-all duration-300"
+            type="submit"
+            className={`cafe-btn min-w-[180px] ${saved ? "!bg-gradient-to-r !from-green-500 !to-emerald-600 !shadow-green-500/30" : ""}`}
           >
-            Save Changes
+            {saved ? (
+              <>
+                <FaCheck className="text-sm" />
+                Saved!
+              </>
+            ) : (
+              "Save Changes"
+            )}
           </button>
         </div>
-
       </form>
     </div>
   );

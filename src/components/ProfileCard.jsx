@@ -1,90 +1,80 @@
 import defaultAvatar from "../assets/default-avatar.png";
+import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaPencilAlt, FaStar } from "react-icons/fa";
 
 function ProfileCard({ user, setUser, setActive }) {
-  console.log(user);
+  const fields = [
+    { label: "Full Name",  value: user.name,    icon: <FaUser />,          placeholder: "Not set" },
+    { label: "Email",      value: user.email,   icon: <FaEnvelope />,      placeholder: "Not set" },
+    { label: "Phone",      value: user.phone,   icon: <FaPhone />,         placeholder: "Not set" },
+    { label: "Address",    value: user.address, icon: <FaMapMarkerAlt />,  placeholder: "Not set" },
+  ];
+
   return (
-    <div className="bg-white rounded-3xl shadow-2xl border border-[#F1E5D8] p-4 sm:p-6 lg:p-8 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 overflow-hidden">
+    <div className="glass-card rounded-3xl p-6 sm:p-8 fade-in-up">
 
-      <h1 className="text-3xl sm:text-4xl font-bold text-[#4A2F22] mb-6 lg:mb-8 tracking-tight text-center lg:text-left">
-        My Profile
-      </h1>
-
-      <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-12 w-full">
-
-        {/* Avatar */}
-<div className="flex justify-center w-full lg:w-auto">
-  <div className="relative w-28 h-28 sm:w-36 sm:h-36 lg:w-52 lg:h-52">
-
-    <img
-  src={
-    user.image && user.image !== "defaultAvatar"
-      ? user.image
-      : defaultAvatar
-  }
-  alt="Avatar"
-  className="w-full h-full rounded-full border-[6px] border-[#C97A2B] object-cover shadow-xl"
-/>
-    
-  </div>
-</div>
-
-        {/* User Information */}
-        <div className="flex-1 w-full min-w-0">
-
-         <div className="grid w-full grid-cols-1 sm:grid-cols-2 gap-4">
-
-            <div className="bg-[#FCFAF7] border border-[#E9D8C6] p-4 sm:p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 min-w-0">
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-[#8B6B52]">
-                Name
-              </h3>
-
-              <p className="mt-2 text-lg font-semibold text-[#4A2F22]">
-                {user.name}
-              </p>
-            </div>
-
-            <div className="bg-[#FCFAF7] border border-[#E9D8C6] p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-[#8B6B52]">
-                Email
-              </h3>
-
-              <p className="mt-2 text-lg font-semibold text-[#4A2F22]">
-                {user.email}
-              </p>
-            </div>
-
-            <div className="bg-[#FCFAF7] border border-[#E9D8C6] p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-[#8B6B52]">
-                Phone
-              </h3>
-
-              <p className="mt-2 text-lg font-semibold text-[#4A2F22]">
-                {user.phone}
-              </p>
-            </div>
-
-            <div className="bg-[#FCFAF7] border border-[#E9D8C6] p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-[#8B6B52]">
-                Address
-              </h3>
-
-              <p className="mt-2 text-lg font-semibold text-[#4A2F22]">
-                {user.address}
-              </p>
-            </div>
-
-          </div>
-
-          <button
-  onClick={() => setActive("Edit Profile")}
-  className="mt-6 w-full sm:w-auto bg-[#C97A2B] hover:bg-[#B56B22] text-white px-8 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
->
-  Edit Profile
-</button>
+      {/* Header */}
+      <div className="flex items-center justify-between mb-8 flex-wrap gap-3">
+        <div>
+          <h1 className="section-title text-3xl sm:text-4xl font-bold text-[#4A2F22] pb-2">
+            My Profile
+          </h1>
+          <p className="text-sm text-[#8B6B52] mt-3">Your personal information</p>
         </div>
-
+        <button
+          onClick={() => setActive("Edit Profile")}
+          className="cafe-btn text-sm gap-2"
+        >
+          <FaPencilAlt className="text-xs" />
+          Edit Profile
+        </button>
       </div>
 
+      {/* Avatar + info row */}
+      <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8">
+
+        {/* Avatar */}
+        <div className="flex flex-col items-center gap-3 flex-shrink-0">
+          <div className="relative">
+            <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-3xl overflow-hidden border-4 border-[#C97A2B] shadow-xl shadow-[#C97A2B]/20">
+              <img
+                src={user.image && user.image !== "defaultAvatar" ? user.image : defaultAvatar}
+                alt="Avatar"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            {/* Badge */}
+            <div className="absolute -bottom-2 -right-2 w-9 h-9 rounded-xl bg-gradient-to-br from-[#C97A2B] to-[#A8621F] flex items-center justify-center shadow-lg">
+              <FaStar className="text-white text-xs" />
+            </div>
+          </div>
+          <div className="text-center">
+            <p className="font-bold text-[#4A2F22] text-lg">{user.name || "Your Name"}</p>
+            <span className="inline-block mt-1 text-xs font-semibold text-[#C97A2B] bg-[#C97A2B]/10 px-3 py-1 rounded-full border border-[#C97A2B]/20">
+              ☕ Café Member
+            </span>
+          </div>
+        </div>
+
+        {/* Info grid */}
+        <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+          {fields.map((field) => (
+            <div
+              key={field.label}
+              className="group bg-[#FDFAF7] hover:bg-white border border-[#E8D5C0] hover:border-[#C97A2B]/40 rounded-2xl p-4 sm:p-5 transition-all duration-300 hover:shadow-md"
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[#C97A2B] text-sm group-hover:scale-110 transition-transform duration-200">
+                  {field.icon}
+                </span>
+                <span className="label-sm">{field.label}</span>
+              </div>
+              <p className="text-[#4A2F22] font-semibold text-base truncate">
+                {field.value || <span className="text-[#C4A99A] italic font-normal text-sm">{field.placeholder}</span>}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

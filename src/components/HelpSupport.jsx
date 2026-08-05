@@ -1,74 +1,107 @@
+import { useState } from "react";
+import { FaChevronDown, FaChevronUp, FaArrowLeft, FaHeadset } from "react-icons/fa";
+
 function HelpSupport({ setActive }) {
+  const [openIndex, setOpenIndex] = useState(null);
+
   const faqs = [
     {
       question: "How do I edit my profile?",
-      answer: "Go to Edit Profile from the sidebar, update your details and click Save Changes."
+      answer: "Go to Edit Profile from the sidebar, update your details such as name, email, phone, and address, then click Save Changes to apply the updates.",
     },
     {
       question: "How can I change my password?",
-      answer: "Open Change Password, enter your old password and your new password."
+      answer: "Open Change Password from the sidebar or dashboard card, enter your current password followed by your new password, and confirm it.",
     },
     {
       question: "How do I contact the café?",
-      answer: "Use the Contact Us page or call us at +91 98765 43210."
+      answer: "Use the Contact Us page to send us a message directly, or call us at +91 98765 43210 during business hours.",
     },
     {
       question: "What are the café opening hours?",
-      answer: "We are open every day from 9:00 AM to 10:00 PM."
-    }
+      answer: "We are open every day from 9:00 AM to 10:00 PM. You're always welcome!",
+    },
+    {
+      question: "How do I find the café location?",
+      answer: "Open the Google Maps section in the sidebar to view our exact location on the map and get directions.",
+    },
   ];
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 md:p-8">
-      <h1 className="text-2xl sm:text-3xl font-bold text-[#4A2F22] mb-6">
-        Help & Support
-      </h1>
+    <div className="glass-card rounded-3xl p-6 sm:p-8 fade-in-up">
 
-      <p className="text-gray-600 mb-8">
-        Find answers to common questions or contact our support team.
-      </p>
+      {/* Header */}
+      <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
+        <div>
+          <h1 className="section-title text-3xl sm:text-4xl font-bold text-[#4A2F22] pb-2">
+            Help & Support
+          </h1>
+          <p className="text-sm text-[#8B6B52] mt-3">Frequently asked questions</p>
+        </div>
+        <button
+          type="button"
+          onClick={() => setActive("My Profile")}
+          className="flex items-center gap-2 text-sm font-semibold text-[#8B6B52] hover:text-[#4A2F22] transition-colors"
+        >
+          <FaArrowLeft className="text-xs" /> Back
+        </button>
+      </div>
 
-      <div className="space-y-5">
-        {faqs.map((faq, index) => (
+      {/* FAQ Accordion */}
+      <div className="space-y-3 mb-8">
+        {faqs.map((faq, i) => (
           <div
-            key={index}
-            className="border rounded-2xl p-4 sm:p-6 bg-[#F8F5F2] shadow-md hover:shadow-xl ..."
+            key={i}
+            className={`border rounded-2xl overflow-hidden transition-all duration-300 ${
+              openIndex === i
+                ? "border-[#C97A2B]/40 shadow-md"
+                : "border-[#E8D5C0] hover:border-[#C97A2B]/30"
+            }`}
           >
-            <h2 className="font-bold text-lg sm:text-xl text-[#4A2F22]">
-              {faq.question}
-            </h2>
-
-            <p className="mt-3 text-sm sm:text-base text-gray-700 leading-7">
-              {faq.answer}
-            </p>
+            <button
+              onClick={() => setOpenIndex(openIndex === i ? null : i)}
+              className="w-full flex items-center justify-between p-4 sm:p-5 text-left bg-white hover:bg-[#FDFAF7] transition-colors"
+            >
+              <span className="font-semibold text-[#4A2F22] text-sm sm:text-base pr-4">
+                {faq.question}
+              </span>
+              <span className={`text-[#C97A2B] flex-shrink-0 transition-transform duration-300 ${openIndex === i ? "rotate-180" : ""}`}>
+                <FaChevronDown className="text-sm" />
+              </span>
+            </button>
+            {openIndex === i && (
+              <div className="px-5 pb-5 bg-[#FDFAF7] border-t border-[#E8D5C0]">
+                <p className="text-sm text-[#6B4226] leading-relaxed pt-3">
+                  {faq.answer}
+                </p>
+              </div>
+            )}
           </div>
         ))}
       </div>
 
-      <div className="mt-10 bg-[#FFF3E0] p-4 sm:p-6 rounded-2xl shadow-md">
-        <h2 className="font-bold text-xl sm:text-2xl text-[#4A2F22]">
-          Need More Help?
-        </h2>
-        <p className="text-gray-600 mt-2">
-        Our support team is available Monday to Saturday from 9:00 AM to 8:00 PM.
-        </p>
-        <p className="mt-5 text-base sm:text-lg font-medium">
-          📧 support@cafedashboard.com
-        </p>
-
-        <p className="mt-3 text-base sm:text-lg font-medium">
-          📞 +91 98765 43210
-        </p>
+      {/* Support card */}
+      <div className="bg-gradient-to-br from-[#2B1A12] to-[#4A2F22] rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center gap-5">
+        <div className="w-14 h-14 rounded-2xl bg-[#C97A2B]/20 flex items-center justify-center flex-shrink-0">
+          <FaHeadset className="text-[#C97A2B] text-2xl" />
+        </div>
+        <div className="flex-1">
+          <h2 className="text-xl font-bold text-white mb-1">Need More Help?</h2>
+          <p className="text-sm text-[#D4A87C]">
+            Our support team is available Monday–Saturday, 9:00 AM – 8:00 PM.
+          </p>
+          <div className="mt-3 flex flex-wrap gap-4 text-sm">
+            <span className="text-white">📧 support@cafedashboard.com</span>
+            <span className="text-white">📞 +91 98765 43210</span>
+          </div>
+        </div>
+        <button
+          onClick={() => setActive("Contact Us")}
+          className="cafe-btn text-sm whitespace-nowrap flex-shrink-0"
+        >
+          Contact Support
+        </button>
       </div>
-      <div className="mt-8 flex justify-center sm:justify-end">
-  <button
-    type="button"
-    onClick={() => setActive("My Profile")}
-    className="bg-[#C97A2B] text-white px-8 py-3 rounded-xl font-semibold hover:bg-[#B56B22] transition-all duration-300"
-  >
-    ← Back to My Profile
-  </button>
-</div>
     </div>
   );
 }
